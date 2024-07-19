@@ -1,0 +1,11 @@
+// learn.javascript.ru
+
+//variables
+
+'use strict';
+
+let admin;
+let name;
+name = 'Джон';
+admin = name;
+console.log(admin);
