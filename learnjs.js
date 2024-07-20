@@ -4,8 +4,8 @@
 
 'use strict';
 
-let admin;
-let name;
-name = 'Джон';
-admin = name;
-console.log(admin);
+let num1 = 10;
+let num2 = 20;
+let result;
+
+result ??= num1 ?? num2;
