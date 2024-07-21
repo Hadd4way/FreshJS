@@ -1,47 +1,24 @@
 // Видео-курс
 
-/*
+url = 'https://purpleschool.ru/course/javascript';
 
-    Дан список задач
-    const tasks = ['Задача 1']
-    Сделать функции:
-    - Добавление задачи в конец
-    - Удаление задачи по названию
-    - Перенос задачи в начало списка по названию
-    Всегда меняем исходный массив
-
-
-*/
-
-const tasks = ['Задача 1']
-
-function addTask(task){
-    tasks.push(task);
-}
-
-function deleteTask(task){
-    let index = tasks.indexOf(task);
-    if (index == -1){
+function breakdown(){
+    let arr = url.split('://');
+    let https = arr[0];
+    if(https !== 'https' || https !== 'http'){
         return;
     }
-    tasks.splice(tasks.indexOf(task),1);
+    let domain = arr[1].split('/')[0];
+    let path = arr[1].slice(arr[1].indexOf('/'))
+    console.log(https,domain,path);
 }
 
-function unshiftTask(task){
-    let index = tasks.indexOf(task);
-    if (index == -1){
-        return;
-    }
-    tasks.splice(index,1);
-    tasks.unshift(task);
-    
+breakdown();
 
+function breakdown2(){
+    const [protocol, _,domain, ...path] = url.split('/');
+    console.log(protocol.slice(0,protocol.length-1));
+    console.log(domain);
+    console.log('/'+path.join('/'));
 }
-
-addTask('Задача 2')
-addTask('Задача 3')
-console.log(tasks)
-// deleteTask('Задача 1');
-// console.log(tasks)
-unshiftTask('Задача 3')
-console.log(tasks)
+breakdown2();
