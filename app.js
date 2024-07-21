@@ -1,33 +1,32 @@
 // Видео-курс
 
-const operations = [1000, -700, 300, -500, 10000];
-let balance = 100;
-
-function countBalance(){
-    let earnings = 0;
-    let spendings = 0;
-    let positive = 0;
-    let isOk = true;
-    for(let i of operations){
-        balance += i;
-        if(balance < 0){
-            isOk = false;
-            balance -= i;
-            break;
-        }
-        console.log(i)
-        if (i > 0){
-            earnings += i;
-            positive++;
-        }
-        else{
-            spendings += i;
-        }
-    }
-    console.log(`Итоговый баланс - ${balance}`);
-    console.log(`Средний расход - ${spendings/(operations.length-positive)}`)
-    console.log(`Средний доход - ${earnings/positive}`)
-    return isOk;
+function add(a,b){
+    return a + b;
 }
 
-countBalance();
+function subtract(a,b){
+    return a - b;
+}
+
+function division(a,b){
+    return b == 0 ? 0 : a/b;
+}
+
+function power(a,b){
+    return a**b;
+}
+
+function calculate(a,b,fn){
+    console.log(fn.name);
+    const res = fn(a,b);
+    return res;
+}
+
+let res = calculate(3,5,add);
+console.log(res);
+res = calculate(3,5,division);
+console.log(res);
+res = calculate(3,5,power);
+console.log(res);
+res = calculate(3,5,subtract);
+console.log(res);
