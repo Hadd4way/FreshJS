@@ -1,24 +1,33 @@
 // Видео-курс
 
-url = 'https://purpleschool.ru/course/javascript';
+const operations = [1000, -700, 300, -500, 10000];
+let balance = 100;
 
-function breakdown(){
-    let arr = url.split('://');
-    let https = arr[0];
-    if(https !== 'https' || https !== 'http'){
-        return;
+function countBalance(){
+    let earnings = 0;
+    let spendings = 0;
+    let positive = 0;
+    let isOk = true;
+    for(let i of operations){
+        balance += i;
+        if(balance < 0){
+            isOk = false;
+            balance -= i;
+            break;
+        }
+        console.log(i)
+        if (i > 0){
+            earnings += i;
+            positive++;
+        }
+        else{
+            spendings += i;
+        }
     }
-    let domain = arr[1].split('/')[0];
-    let path = arr[1].slice(arr[1].indexOf('/'))
-    console.log(https,domain,path);
+    console.log(`Итоговый баланс - ${balance}`);
+    console.log(`Средний расход - ${spendings/(operations.length-positive)}`)
+    console.log(`Средний доход - ${earnings/positive}`)
+    return isOk;
 }
 
-breakdown();
-
-function breakdown2(){
-    const [protocol, _,domain, ...path] = url.split('/');
-    console.log(protocol.slice(0,protocol.length-1));
-    console.log(domain);
-    console.log('/'+path.join('/'));
-}
-breakdown2();
+countBalance();
